@@ -16,7 +16,16 @@ export class ProductService {
     return this.http.get<Product>(`${this.BASE_URL}/products/${id}`);
   }
 
-  getProducts(): Observable<Product[]> {
-    return this.http.post<Product[]>(`${this.BASE_URL}/products`, {});
-  }
+  getProducts(sortKey?: string, sortType: 'ASC' | 'DESC' = 'ASC', categories?: string[]): Observable<Product[]> {
+    const body: Record<string, any> = {};
+  
+    if (sortKey) {
+      body['sort'] = { key: sortKey, type: sortType };
+    }
+    if (categories && categories.length > 0) {
+      body['categories'] = categories;
+    }
+  
+    return this.http.post<Product[]>(`${this.BASE_URL}/products`, body);
+  }  
 }

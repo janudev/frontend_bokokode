@@ -14,6 +14,9 @@ import { CommonModule } from '@angular/common';
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
   featuredProd: Product | undefined;
+  isAsc: boolean = true;
+  selectedCategories: string[] = [];
+  categories: string[] = ['People', 'Premium', 'Pets', 'Food', 'Landmarks', 'Cities', 'Nature'];
 
   constructor(private productService: ProductService) {}
 
@@ -21,18 +24,35 @@ export class ProductListComponent implements OnInit {
     this.getProducts();
   }
 
-  getProducts(): void {
-    this.productService.getProducts().subscribe(
+  getProducts(sortKey: string = '', categories: string[] = []): void {
+    this.productService.getProducts(sortKey, this.isAsc ? 'ASC' : 'DESC', categories).subscribe(
       (products) => {
-        this.products = products;
-
-        this.featuredProd = this.products.find(product => product.featured === true)
-        this.products = this.products.filter(product => product.featured !== true)
-
-        console.log("Productos recibidos:", products);
-        console.log("Producto destacado:", this.featuredProd);
+        if (!this.featuredProd) {
+          this.featuredProd = products.find(product => product.featured === true);
+        }
+        
+        this.products = products.filter(product => product.featured !== true);
+  
+        if (categories.length > 0) {
+          this.products = this.products.filter(product => categories.includes(product.category));
+        }
       },
       (err) => console.error("Error al obtener los productos:", err)
     );
+  }
+  
+  toggleSortByPrice(): void {
+    this.isAsc = !this.isAsc;
+    this.getProducts('price');
+  }
+
+  toggleCategory(category: string): void {
+    const index = this.selectedCategories.indexOf(category);
+    if (index > -1) {
+      this.selectedCategories.splice(index, 1);
+    } else {
+      this.selectedCategories.push(category);
+    }
+    this.getProducts('', this.selectedCategories);
   }
 }
