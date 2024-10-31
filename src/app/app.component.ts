@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './base/ui/header/header.component';
-import ProductListComponent from './products/features/product-list/product-list.component';
+import { ProductListComponent } from './products/features/product-list/product-list.component';
 
 @Component({
   selector: 'app-root',

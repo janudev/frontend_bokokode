@@ -22,22 +22,25 @@
         </div>
     </div>
     <div class="flex justify-between mt-14">
-        <div class="flex flex-col mr-[163px]">
-        <span class="text-[22px] font-bold">Category</span>
-        <ul class="mt-10 text-[22px] text-[#1D1D1D] font-normal">
-            <li><mat-checkbox>People</mat-checkbox></li>
-            <li><mat-checkbox>Premium</mat-checkbox></li>
-            <li><mat-checkbox>Pets</mat-checkbox></li>
-            <li><mat-checkbox>Food</mat-checkbox></li>
-            <li><mat-checkbox>Landmarks</mat-checkbox></li>
-            <li><mat-checkbox>Cities</mat-checkbox></li>
-            <li><mat-checkbox>Nature</mat-checkbox></li>
-        </ul>
+        <div class="flex flex-col">
+            <span class="text-[22px] font-bold mb-4">Category</span>
+            <ul class="mt-10 text-[22px] text-[#1D1D1D] font-normal space-y-6">
+                <li><mat-checkbox>People</mat-checkbox></li>
+                <li><mat-checkbox>Premium</mat-checkbox></li>
+                <li><mat-checkbox>Pets</mat-checkbox></li>
+                <li><mat-checkbox>Food</mat-checkbox></li>
+                <li><mat-checkbox>Landmarks</mat-checkbox></li>
+                <li><mat-checkbox>Cities</mat-checkbox></li>
+                <li><mat-checkbox>Nature</mat-checkbox></li>
+            </ul>
         </div>
-        <div class="grid grid-cols-3">
-        <p>Producto 1</p>
-        <p>Producto 2</p>
-        <p>Producto 3</p>
+        <div class="grid grid-cols-3 gap-4">
+            <div *ngFor="let product of products">
+                <img [src]="product.image.src" [alt]="product.image.alt" class="w-[282px] h-[399px] mb-4" />
+                <p class="text-[#656565] text-[22px] font-bold">{{ product.category }}</p>
+                <p class="text-[34px] font-bold mt-1 mb-2">{{ product.name }}</p>
+                <p class="text-[#656565] text-[29px] font-normal">{{ product.price }} {{ product.currency }}</p>
+            </div>
         </div>
-  </div>
+    </div>
 </section>
