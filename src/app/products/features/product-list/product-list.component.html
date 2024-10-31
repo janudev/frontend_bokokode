@@ -36,12 +36,14 @@
         <p class="font-bold text-3xl">Photography / <span class="text-[#9B9B9B] text-3xl font-normal">Premium Photos</span></p>
         <div class="flex space-x-2 items-baseline">
             <span class="text-[22px] font-normal">Sort By</span>
-            <span class="text-[22px] font-normal cursor-pointer" (click)="toggleSortByPrice()">Price</span>
-            <svg [class.rotate-180]="!isAsc" width="20" height="13" viewBox="0 0 20 13" fill="none">
-              <path d="M2 2L10 10L18 2" stroke="black" stroke-width="3"/>
-            </svg>
+            <div class="flex space-x-1 items-center cursor-pointer" (click)="toggleSortByPrice()">
+                <span class="text-[22px] font-normal">Price</span>
+                <svg [class.rotate-180]="!isAsc" width="20" height="13" viewBox="0 0 20 13" fill="none">
+                    <path d="M2 2L10 10L18 2" stroke="black" stroke-width="3"/>
+                </svg>
+            </div>
         </div>
-    </div>
+    </div>       
     <div class="flex justify-between mt-14">
         <div class="flex flex-col">
             <span class="text-[22px] font-bold mb-4">Category</span>
