@@ -8,5 +8,5 @@ export interface Product {
     bestseller: boolean;
     featured: boolean;
     description: string;
-    people_also_buy: string[];
+    people_also_buy: Product[];
 }

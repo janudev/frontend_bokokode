@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
+  featuredProd: Product | undefined;
 
   constructor(private productService: ProductService) {}
 
@@ -24,7 +25,12 @@ export class ProductListComponent implements OnInit {
     this.productService.getProducts().subscribe(
       (products) => {
         this.products = products;
+
+        this.featuredProd = this.products.find(product => product.featured === true)
+        this.products = this.products.filter(product => product.featured !== true)
+
         console.log("Productos recibidos:", products);
+        console.log("Producto destacado:", this.featuredProd);
       },
       (err) => console.error("Error al obtener los productos:", err)
     );
