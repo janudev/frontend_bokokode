@@ -16,7 +16,7 @@ export class ProductService {
     return this.http.get<Product>(`${this.BASE_URL}/products/${id}`);
   }
 
-  getProducts(sortKey?: string, sortType: 'ASC' | 'DESC' = 'ASC', categories?: string[]): Observable<Product[]> {
+  getProducts(sortKey?: string, sortType?: string, categories?: string[]): Observable<Product[]> {
     const body: Record<string, any> = {};
   
     if (sortKey) {

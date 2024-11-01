@@ -17,15 +17,17 @@ export class ProductListComponent implements OnInit {
   isAsc: boolean = true;
   selectedCategories: string[] = [];
   categories: string[] = ['People', 'Premium', 'Pets', 'Food', 'Landmarks', 'Cities', 'Nature'];
+  sortKey: string = 'price';
+  sortType: string = 'ASC';
 
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.getProducts();
-  }
+    this.getProducts(this.sortKey, this.selectedCategories);
+  }  
 
-  getProducts(sortKey: string = '', categories: string[] = []): void {
-    this.productService.getProducts(sortKey, this.isAsc ? 'ASC' : 'DESC', categories).subscribe(
+  getProducts(sortKey: string = this.sortKey, categories: string[] = this.selectedCategories): void {
+    this.productService.getProducts(sortKey, this.sortType, categories).subscribe(
       (products) => {
         if (!this.featuredProd) {
           this.featuredProd = products.find(product => product.featured === true);
@@ -39,11 +41,12 @@ export class ProductListComponent implements OnInit {
       },
       (err) => console.error("Error al obtener los productos:", err)
     );
-  }
+  }  
   
   toggleSortByPrice(): void {
     this.isAsc = !this.isAsc;
-    this.getProducts('price');
+    this.sortType = this.isAsc ? 'ASC' : 'DESC';
+    this.getProducts(this.sortKey); 
   }
 
   toggleCategory(category: string): void {
@@ -53,6 +56,6 @@ export class ProductListComponent implements OnInit {
     } else {
       this.selectedCategories.push(category);
     }
-    this.getProducts('', this.selectedCategories);
+    this.getProducts(this.sortKey, this.selectedCategories); 
   }
 }
