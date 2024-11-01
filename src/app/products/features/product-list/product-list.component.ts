@@ -3,11 +3,18 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../../interfaces/Product';
 import { CommonModule } from '@angular/common';
+import { FeaturedProductCardComponent } from "../../components/featured-product-card/featured-product-card.component"
+import { ProductCardComponent } from "../../components/product-card/product-card.component"
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [MatCheckboxModule, CommonModule],
+  imports: [
+    MatCheckboxModule,
+    CommonModule,
+    FeaturedProductCardComponent,
+    ProductCardComponent
+  ],
   templateUrl: './product-list.component.html',
   styles: ``,
 })
