@@ -1,9 +1,14 @@
-<div class="relative group">
-  <img [src]="product.image.src" [alt]="product.image.alt" class="w-[282px] h-[399px] mb-2 transition-all duration-300" />
-  <div class="absolute inset-0 flex items-center justify-center bg-black w-[282px] h-[46px] transition-all duration-300 opacity-0 group-hover:opacity-100">
-    <span class="font-medium text-[23px] leading-6 bg-black text-white uppercase tracking-wide">Add to cart</span>
+<div>
+  <div class="relative w-[282px] h-[399px] overflow-hidden" [class.group]="true">
+    <img [src]="product.image.src" [alt]="product.image.alt" class="w-full h-full" />
+    <div *ngIf="product.bestseller" class="absolute top-0 left-0 bg-white w-32 h-8 text-xl leading-5 px-2 py-1 flex items-center justify-center">
+      Best Seller
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 flex items-center justify-center bg-black h-[46px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+      <span class="font-medium text-[23px] leading-6 text-white uppercase tracking-wide">Add to cart</span>
+    </div>
   </div>
-  <p class="text-[#656565] text-[22px] font-bold leading-6">{{ product.category }}</p>
+  <p class="text-[#656565] text-[22px] font-bold leading-6 mt-3">{{ product.category }}</p>
   <p class="text-[34px] font-bold leading-9 mt-2 mb-3">{{ product.name }}</p>
   <p class="text-[#656565] text-[29px] font-normal leading-8">{{ product.price }} {{ product.currency }}</p>
 </div>

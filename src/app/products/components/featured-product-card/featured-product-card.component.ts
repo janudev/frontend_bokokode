@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../../../interfaces/Product';
 import { CommonModule } from '@angular/common';
+import { ProductSmallCardComponent } from '../product-small-card/product-small-card.component';
 
 @Component({
   selector: 'app-featured-product-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ProductSmallCardComponent],
   templateUrl: './featured-product-card.component.html',
   styles: ``
 })
