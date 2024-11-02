@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../../../interfaces/Product';
 import { CommonModule } from '@angular/common';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-small-card',
@@ -11,4 +12,10 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductSmallCardComponent {
   @Input() product!: Product;
+
+  constructor(private productService: ProductService) {}
+
+  onAddToCart() {
+    this.productService.addToCart(this.product);
+  }
 }
