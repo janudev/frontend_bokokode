@@ -41,4 +41,10 @@ export class ProductService {
   getCartProducts(): Product[] {
     return this.cart;
   }
+
+  clearCart() {
+    this.cart = [];
+    this.cartCount.next(this.cart.length);
+  }
+  
 }
