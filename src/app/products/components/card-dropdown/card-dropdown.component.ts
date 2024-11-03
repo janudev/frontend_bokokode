@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../../interfaces/Product';
 import { CommonModule } from '@angular/common';
@@ -12,13 +12,23 @@ import { CommonModule } from '@angular/common';
 })
 export class CardDropdownComponent {
   @Input() cartProducts: Product[] = [];
+  @Output() dropdownVisibilityChange = new EventEmitter<boolean>();
 
   constructor(private productService: ProductService) {
     this.cartProducts = this.productService.getCartProducts();
   }
 
-  clearCart() {
+  clearCartAndClose() {
     this.productService.clearCart();
     this.cartProducts = [];
+    this.closeDropdown();
+  }
+
+  closeDropdown() {
+    this.dropdownVisibilityChange.emit(false);
+  }
+
+  showDropdown() {
+    this.dropdownVisibilityChange.emit(true);
   }
 }
