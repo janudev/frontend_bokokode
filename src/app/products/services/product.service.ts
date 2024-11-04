@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { Product } from "../../interfaces/Product";
-import { Observable, BehaviorSubject } from 'rxjs'
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class ProductService {
   private cart: Product[] = [];
   private cartCount = new BehaviorSubject<number>(0);
 
-  BASE_URL: string = "http://localhost:3000"
+  BASE_URL: string = "http://localhost:3000";
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class ProductService {
     return this.http.get<Product>(`${this.BASE_URL}/products/${id}`);
   }
 
-  getProducts(sortKey?: string, sortType?: string, categories?: string[]): Observable<Product[]> {
+  getProducts(sortKey?: string, sortType?: string, categories?: string[], page: number = 1, pageSize: number = 6): Observable<{ products: Product[], total: number }> {
     const body: Record<string, any> = {};
   
     if (sortKey) {
@@ -27,9 +27,12 @@ export class ProductService {
     if (categories && categories.length > 0) {
       body['categories'] = categories;
     }
-  
-    return this.http.post<Product[]>(`${this.BASE_URL}/products`, body);
-  }
+    
+    body['page'] = page;
+    body['pageSize'] = pageSize;
+
+    return this.http.post<{ products: Product[], total: number }>(`${this.BASE_URL}/products`, body);
+  } 
 
   cartCount$ = this.cartCount.asObservable();
 
@@ -46,5 +49,4 @@ export class ProductService {
     this.cart = [];
     this.cartCount.next(this.cart.length);
   }
-  
 }
