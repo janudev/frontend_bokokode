@@ -20,7 +20,12 @@
                     {{ cartItemCount }}
                   </span>
                 </div>
-                <app-card-dropdown *ngIf="isCartDropdownVisible" [cartProducts]="productService.getCartProducts()" class="absolute right-20 mt-4"></app-card-dropdown>
+                <app-card-dropdown
+                  *ngIf="isCartDropdownVisible"
+                  [cartProducts]="productService.getCartProducts()"
+                  (dropdownVisibilityChange)="handleDropdownVisibilityChange($event)"
+                  class="absolute right-20"
+                ></app-card-dropdown>
               </div>
                 <button (click)="toggleCartDropdown()" class="cursor-pointer text-black flex items-center">
                   <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">

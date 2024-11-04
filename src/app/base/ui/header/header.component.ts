@@ -26,4 +26,8 @@ export class HeaderComponent implements OnInit {
   toggleCartDropdown() {
     this.isCartDropdownVisible = !this.isCartDropdownVisible;
   }
+
+  handleDropdownVisibilityChange(visible: boolean) {
+    this.isCartDropdownVisible = visible;
+  }
 }

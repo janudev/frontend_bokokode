@@ -13,7 +13,7 @@ import { ProductCardComponent } from "../../components/product-card/product-card
     MatCheckboxModule,
     CommonModule,
     FeaturedProductCardComponent,
-    ProductCardComponent
+    ProductCardComponent,
   ],
   templateUrl: './product-list.component.html',
   styles: ``,
