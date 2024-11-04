@@ -1,25 +1,25 @@
 <div *ngIf="featuredProd" class="flex flex-col">
-  <div class="flex justify-between items-start mb-8">
+  <div class="flex justify-between items-start lg:mb-8 mb-6">
     <p class="font-bold text-[32px] leading-8">{{ featuredProd.name }}</p>
-    <button (click)="onAddToCart()" class="font-medium text-[23px] leading-6 bg-black text-white uppercase w-[257px] h-[47px] tracking-wide">
+    <button (click)="onAddToCart()" class="font-medium lg:text-[23px] text-lg leading-6 bg-black text-white uppercase lg:w-[257px] w-[227px] h-[47px] tracking-wide">
       Add to cart
     </button>
   </div>
   <div class="relative mb-8">
-    <img [src]="featuredProd.image.src" [alt]="featuredProd.image.alt" class="max-w-[1280px] max-h-[553px]" />
-    <div class="absolute bottom-0 left-0 bg-white w-[272px] h-[67px] flex items-center justify-center">
-      <span class="font-bold text-xl leading-5">Photo of the day</span>
+    <img [src]="featuredProd.image.src" [alt]="featuredProd.image.alt" class="w-[382px] h-[239px] sm:w-auto sm:h-auto xl:max-w-[1280px] xl:max-h-[553px]" />
+    <div class="absolute bottom-0 left-0 bg-white lg:w-[272px] sm:w-[222px] sm:h-[67px] w-[227px] h-[57px] flex items-center justify-center">
+      <span class="font-bold lg:text-xl text-[15px] leading-5">Photo of the day</span>
     </div>
   </div>
-  <div class="flex mb-8 justify-between items-start">
+  <div class="flex sm:flex-row flex-col md:mb-8 mb-6 justify-between items-start">
     <div class="flex flex-col">
-      <p class="font-bold text-[22px] leading-6 mb-2">About the {{ featuredProd.name }}</p>
-      <p class="font-bold text-[22px] text-[#656565] leading-6 mb-3">{{ featuredProd.category }}</p>
-      <p class="font-normal text-lg text-[#656565] leading-[27px] max-w-[690px] max-h-[299px]">{{ featuredProd.description }}</p>
+      <p class="font-bold text-[22px] leading-6 sm:mb-2 mb-10">About the {{ featuredProd.name }}</p>
+      <p class="font-bold text-[22px] text-[#656565] leading-6 mb-3 hidden sm:block">{{ featuredProd.category }}</p>
+      <p class="font-normal text-lg text-[#656565] leading-[27px] max-w-[690px] max-h-[299px] mb-4">{{ featuredProd.description }}</p>
     </div>
-    <div class="flex flex-col items-end">
-      <p class="font-bold text-[22px] leading-6 mb-[27px] text-right">People also buy</p>
-      <div class="flex flex-row justify-end">
+    <div class="flex flex-col sm:items-end items-start">
+      <p class="font-bold text-[22px] leading-6 sm:mb-[27px] mb-[49px] text-right">People also buy</p>
+      <div class="flex justify-end">
         <div *ngFor="let product of featuredProd.people_also_buy">
           <app-product-small-card [product]="product"></app-product-small-card>
         </div>        
