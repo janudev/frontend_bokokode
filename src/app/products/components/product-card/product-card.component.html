@@ -1,16 +1,16 @@
 <div>
   <div class="relative lg:w-[282px] lg:h-[399px] sm:w-[130px] sm:h-[199px] w-[362px] h-[502px] overflow-hidden" [class.group]="true">
     <img [src]="product.image.src" [alt]="product.image.alt" class="w-full h-full" />
-    <div *ngIf="product.bestseller" class="absolute top-0 left-0 bg-white lg:w-32 lg:h-8 w-20 h-6 lg:text-xl text-xs leading-5 px-2 py-1 flex items-center justify-center">
+    <div *ngIf="product.bestseller" class="absolute top-0 left-0 bg-white lg:w-32 lg:h-8 sm:w-20 sm:h-6 w-[163px] h-[38px] lg:text-xl sm:text-xs text-xl leading-5 px-2 py-1 flex items-center justify-center">
       Best Seller
     </div>
-    <button (click)="onAddToCart()" class="absolute bottom-0 left-0 right-0 flex items-center justify-center bg-black lg:h-[46px] h-[36px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-auto">
+    <button (click)="onAddToCart()" class="absolute bottom-0 left-0 right-0 flex items-center justify-center bg-black lg:h-[46px] sm:h-[36px] h-[47px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-auto">
       <span class="font-medium lg:text-[23px] text-base leading-6 text-white uppercase tracking-wide">
         Add to cart
       </span>
     </button>    
   </div>
-  <p class="text-[#656565] lg:text-[22px] text-sm font-bold leading-6 lg:mt-3 mt-1">{{ product.category }}</p>
-  <p class="lg:text-[34px] text-md font-bold leading-9 lg:mt-2 lg:mb-3">{{ product.name }}</p>
-  <p class="text-[#656565] lg:text-[29px] text-normal font-normal leading-8">{{ product.price }} {{ product.currency }}</p>
+  <p class="text-[#656565] lg:text-[22px] sm:text-sm text-[22px] font-bold leading-6 lg:mt-3 sm:mt-1 mt-4">{{ product.category }}</p>
+  <p class="lg:text-[34px] sm:text-lg text-[34px] font-bold leading-9 sm:py-2 mb-3 mt-3">{{ product.name }}</p>
+  <p class="text-[#656565] lg:text-[29px] sm:text-base text-[29px] font-normal leading-8">{{ product.price }} {{ product.currency }}</p>
 </div>

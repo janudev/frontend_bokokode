@@ -16,7 +16,7 @@
             <div class="flex items-center">
               <div class="relative">
                 <div (click)="toggleCartDropdown()" class="cursor-pointer">
-                  <span *ngIf="cartItemCount > 0" class="bg-black text-white mr-20 text-xl font-bold leading-5 w-[21px] h-[22px] flex items-center justify-center">
+                  <span *ngIf="cartItemCount > 0" class="bg-black text-white sm:mr-20 mr-10 text-xl font-bold leading-5 w-[21px] h-[22px] flex items-center justify-center">
                     {{ cartItemCount }}
                   </span>
                 </div>
@@ -24,7 +24,7 @@
                   *ngIf="isCartDropdownVisible"
                   [cartProducts]="productService.getCartProducts()"
                   (dropdownVisibilityChange)="handleDropdownVisibilityChange($event)"
-                  class="absolute right-20"
+                  class="absolute sm:right-20 right-1"
                 ></app-card-dropdown>
               </div>
                 <button (click)="toggleCartDropdown()" class="cursor-pointer text-black flex items-center">

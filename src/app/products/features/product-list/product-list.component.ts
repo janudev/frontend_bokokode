@@ -21,6 +21,7 @@ import { ProductCardComponent } from "../../components/product-card/product-card
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
   featuredProd: Product | undefined;
+  isDropdownOpen = false;
 
   // Filtrado
   isAsc: boolean = true;
@@ -85,5 +86,18 @@ export class ProductListComponent implements OnInit {
       this.selectedCategories.push(category);
     }
     this.getProducts(this.sortKey, this.selectedCategories); 
+  }
+  
+  clearCategories(): void {
+    this.selectedCategories = [];
+    this.getProducts(this.sortKey, this.selectedCategories);
+  }
+  
+  saveSelection(): void {
+    this.isDropdownOpen = false; 
+  }
+
+  isChecked(category: string): boolean {
+    return this.selectedCategories.includes(category);
   }
 }
